@@ -1,4 +1,4 @@
-module simpleWebGoApp
+module simpleWebApp
 
 go 1.14
 
