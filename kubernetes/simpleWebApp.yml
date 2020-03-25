@@ -16,7 +16,7 @@ items:
       name: http
       port: 8080
       targetPort: 8080
-      # nodePort: 30000
+      # nodePort: 30000 # setup of static nodePort
 - apiVersion: apps/v1 
   kind: Deployment  # K8s Deployment
   metadata:
