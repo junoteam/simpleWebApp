@@ -34,7 +34,7 @@ NAME                                READY   STATUS    RESTARTS   AGE     IP     
 pod/simple-web-app-c689f87b-gk8qx   1/1     Running   0          2m30s   10.1.99.9   homeserver   <none>           <none>
 ```
 
-Check whas is your endpoint to Kube and test it: 
+Check what's your endpoint in Kubernetes and test it: 
 ```
 curl http://10.100.102.5:30482/ping
 {"message":"pong"}
