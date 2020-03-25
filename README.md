@@ -6,7 +6,12 @@ simpleWebApp - simple web application with Gin framework written on Golang and r
 - Docker Alpine latest
 
 Build docker image: 
-> docker container run -ti --name simpleWebApp --rm junoteam/simplewebapp:latest
+> docker build -t junoteam/simplewebapp .
 
 Run docker container: 
-> docker container run -ti --name simpleWebApp --rm junoteam/simplewebapp:latest
+> docker container run -ti --name simpleWebGoApp --rm -p 8080:8080 junoteam/simplewebapp:latest
+
+Check results:  
+
+![alt text](https://imgur.com/Bo75A8h "Logo Title Text 1")
+
