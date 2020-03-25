@@ -6,20 +6,20 @@ simpleWebApp - simple web application with Gin framework written on Golang and r
 - Docker Alpine latest
 - Kubernetes v1.18.0
 
-Build docker image: 
-> docker build -t mothes/simplewebapp .
+Build docker image:   
+`docker build -t mothes/simplewebapp .`
 
-Push to dockerhub: 
-> docker push mothes/simplewebapp
+Push to dockerhub:  
+`docker push mothes/simplewebapp`
 
-Run docker container: 
-> docker container run -ti --name simpleWebGoApp --rm -p 8080:8080 mothes/simplewebapp
+Run docker container:   
+`docker container run -ti --name simpleWebGoApp --rm -p 8080:8080 mothes/simplewebapp`
 
 Check results:  
 ![](https://github.com/junoteam/simpleWebApp/blob/master/simpleWebApp.png)
 
-Run app in Kubernetes: 
-> kubectl apply -f kubernetes/simpleWebApp.yml
+Run app in Kubernetes:  
+`kubectl apply -f kubernetes/simpleWebApp.yml`
 
 Check status of deployment in Kubernetes:
 ``` 
