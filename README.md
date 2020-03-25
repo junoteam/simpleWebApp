@@ -13,5 +13,4 @@ Run docker container:
 
 Check results:  
 
-![alt text](https://imgur.com/Bo75A8h "Logo Title Text 1")
-
+![](https://github.com/junoteam/simpleWebApp/blob/master/simpleWebApp.png)
