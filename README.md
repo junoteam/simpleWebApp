@@ -57,10 +57,12 @@ curl http://10.100.102.5:30482/ping
 {"message":"pong"}
 ```
 
-Roadmap: 
-- To add helm3 chart for app
-- To add blue/green deployments
+---
+
+*Roadmap:* 
+- To add Helm3 chart for app
+- To add Blue/Green deployments
 - To add automaical tests 
-- To add external Load Balancer (for blue/green) deployments
+- To add external Load Balancer (for Blue/Green) deployments
 - To add CI/CD tool
 - Migrate local Kubernetes setup, to AWS Amazon
