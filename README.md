@@ -1,5 +1,5 @@
 # simpleWebApp
-simpleWebApp - simple web application with Gin framework written on Golang and running in Docker
+**simpleWebApp** - simple web application with Gin framework written on Golang and running in Docker
 
 - Golang 1.14 
 - Gin v1.6.0
@@ -8,6 +8,9 @@ simpleWebApp - simple web application with Gin framework written on Golang and r
 
 Build docker image:   
 `docker build -t mothes/simplewebapp .`
+
+Login to Dockerhub: 
+`docker login`
 
 Push to dockerhub:  
 `docker push mothes/simplewebapp`
@@ -21,17 +24,31 @@ Check results:
 Run app in Kubernetes:  
 `kubectl apply -f kubernetes/simpleWebApp.yml`
 
+p.s.: Don't forget to add secrets from private docker registry to Kubernetes
+
+Check you Docker config:
+`cat ~/.docker/config.json`
+
+Add secret to Kubernetes:
+```
+kubectl create secret generic regcred \
+    --from-file=.dockerconfigjson=/root/.docker/config.json \
+    --type=kubernetes.io/dockerconfigjson
+```
+
 Check status of deployment in Kubernetes:
 ``` 
 kubectl get deployments,svc,pods -l app=simple-web-app -o wide
-NAME                             READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS       IMAGES                SELECTOR
-deployment.apps/simple-web-app   1/1     1            1           2m30s   simple-web-app   mothes/simplewebapp   app=simple-web-app
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS       IMAGES                SELECTOR
+deployment.apps/simple-web-app   3/3     3            3           17h   simple-web-app   mothes/simplewebapp   app=simple-web-app
 
-NAME                         TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE     SELECTOR
-service/simple-web-app-svc   NodePort   10.152.183.130   <none>        8080:30482/TCP   2m30s   app=simple-web-app
+NAME                         TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE   SELECTOR
+service/simple-web-app-svc   NodePort   10.152.183.130   <none>        8080:30482/TCP   17h   app=simple-web-app,color=blue
 
-NAME                                READY   STATUS    RESTARTS   AGE     IP          NODE         NOMINATED NODE   READINESS GATES
-pod/simple-web-app-c689f87b-gk8qx   1/1     Running   0          2m30s   10.1.99.9   homeserver   <none>           <none>
+NAME                                  READY   STATUS    RESTARTS   AGE   IP           NODE         NOMINATED NODE   READINESS GATES
+pod/simple-web-app-8568875847-6j6tz   1/1     Running   1          10h   10.1.99.27   homeserver   <none>           <none>
+pod/simple-web-app-8568875847-whdsz   1/1     Running   2          10h   10.1.99.29   homeserver   <none>           <none>
+pod/simple-web-app-8568875847-z2tmb   1/1     Running   2          10h   10.1.99.30   homeserver   <none>           <none>
 ```
 
 Check what's your endpoint in Kubernetes and test it: 
@@ -39,3 +56,11 @@ Check what's your endpoint in Kubernetes and test it:
 curl http://10.100.102.5:30482/ping
 {"message":"pong"}
 ```
+
+Roadmap: 
+- To add helm3 chart for app
+- To add blue/green deployments
+- To add automaical tests 
+- To add external Load Balancer (for blue/green) deployments
+- To add CI/CD tool
+- Migrate local Kubernetes setup, to AWS Amazon
