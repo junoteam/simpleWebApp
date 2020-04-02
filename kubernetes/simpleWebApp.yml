@@ -8,7 +8,8 @@ items:
     labels:
       app: simple-web-app
   spec:
-    type: NodePort
+    # type: NodePort
+    type: LoadBalancer
     selector:
       app: simple-web-app
       color: blue # labels for blue / green deployments
