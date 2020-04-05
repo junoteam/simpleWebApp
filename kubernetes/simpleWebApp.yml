@@ -26,7 +26,7 @@ items:
     labels:
       app: simple-web-app
   spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
           app: simple-web-app 
