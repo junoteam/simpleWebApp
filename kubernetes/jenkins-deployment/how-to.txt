@@ -11,3 +11,6 @@ kubectl get servicesonpath={.status.loadBalancer.ingress[0].ip}
 Navigate to the URL to setup Jenkins. The password for the installation can be obtained like this:
 
 kubectl exec $(kubectl get pods -l name=jenkins -o jsonpath={.items[0].metadata.name}) cat /var/jenkins_home/secrets/initialAdminPassword
+
+
+FROM HERE: https://github.com/Kamshak/jenkins-kubernetes

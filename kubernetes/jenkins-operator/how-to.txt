@@ -1,0 +1,2 @@
+FROM HERE: https://jenkinsci.github.io/kubernetes-operator/docs/installation/
+GIT: https://github.com/jenkinsci/kubernetes-operator
