@@ -16,7 +16,7 @@ items:
     ports:
     - protocol: TCP
       name: http
-      port: 8080
+      port: 80
       targetPort: 8080
       # nodePort: 30000 # setup of static nodePort
 - apiVersion: apps/v1 
