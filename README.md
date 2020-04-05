@@ -86,7 +86,8 @@ Events:           <none>
 - HPA manifest for autoscaling pods in Kubernetes ✔
 - Helm3 chart for app 
 - Blue/Green deployments
-- Automaical tests 
+- Automaical tests (In Travis)
 - External Load Balancer (for Blue/Green) deployments
-- CI/CD tool
-- Migrate local Kubernetes setup, to AWS Amazon
+- CI/CD tool (Jenkins operator in Kube)
+- Migrate local Kubernetes setup, to GKE ✔
+- Describe how to install HA Kubernetes cluster in AWS Amazon.
