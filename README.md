@@ -57,12 +57,36 @@ curl http://10.100.102.5:30482/ping
 {"message":"pong"}
 ```
 
+HPA. Horizontal Pod Autoscaler.
+```
+kubectl describe hpa simple-web-app
+Name:                                                  simple-web-app
+Namespace:                                             default
+Labels:                                                <none>
+Annotations:                                           CreationTimestamp:  Sun, 05 Apr 2020 17:59:27 +0300
+Reference:                                             Deployment/simple-web-app
+Metrics:                                               ( current / target )
+  resource memory on pods:                             3043328 / 100Mi
+  resource cpu on pods  (as a percentage of request):  1% (1m) / 20%
+Min replicas:                                          1
+Max replicas:                                          8
+Deployment pods:                                       1 current / 1 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from memory resource
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:           <none>
+```
+
 ---
 
 *Roadmap:* 
-- To add Helm3 chart for app
-- To add Blue/Green deployments
-- To add automaical tests 
-- To add external Load Balancer (for Blue/Green) deployments
-- To add CI/CD tool
+- HPA manifest for autoscaling pods in Kubernetes ✔
+- Helm3 chart for app 
+- Blue/Green deployments
+- Automaical tests 
+- External Load Balancer (for Blue/Green) deployments
+- CI/CD tool
 - Migrate local Kubernetes setup, to AWS Amazon
