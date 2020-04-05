@@ -1,0 +1,5 @@
+UserKnownHostsFile /var/jenkins-home/.ssh/known-hosts
+StrictHostKeyChecking no
+Host github.com
+    User git
+    IdentityFile /var/jenkins_home/.ssh/jenkins-ssh

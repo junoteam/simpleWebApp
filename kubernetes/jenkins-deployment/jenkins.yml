@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: "Service"
+  metadata:
+    name: "jenkins"
+  spec:
+    type: "LoadBalancer"
+    selector:
+      name: "jenkins"
+    ports:
+      - name: "http"
+        port: 80
+        targetPort: 8080
+        protocol: "TCP"
+      - name: "slave"
+        port: 50000
+        protocol: "TCP"
+- apiVersion: apps/v1 
+  kind: Deployment
+  metadata:
+    name: jenkins-deployment
+  spec:
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          name: jenkins
+      spec:
+        securityContext:
+          fsGroup: 1000
+          runAsNonRoot: true
+        containers:
+        - name: jenkins
+          image: jenkins:2.3-alpine
+          ports:
+            - containerPort: 8080
+            - containerPort: 50000
+          volumeMounts:
+            - name: "jenkins-data"
+              mountPath: "/var/jenkins_home"
+            - name: "jenkins-ssh"
+              mountPath: "/var/jenkins_home/.ssh"
+              readOnly: true
+          livenessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+        volumes:
+          - name: "jenkins-data"
+            gcePersistentDisk:
+              pdName: kubernetes-jenkins
+              fsType: ext4
+          - name: "jenkins-ssh"
+            secret:
+              secretName: jenkins-ssh
