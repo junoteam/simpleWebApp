@@ -48,7 +48,7 @@ items:
           volumeMounts:
             - name: jenkins-data
               mountPath: /var/jenkins_home
-            - name: jenkins-ssh"
+            - name: jenkins-ssh
               mountPath: /var/jenkins_home/.ssh
               readOnly: true
           livenessProbe:
