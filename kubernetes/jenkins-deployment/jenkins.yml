@@ -38,6 +38,7 @@ items:
       spec:
         securityContext:
           fsGroup: 1000
+          runAsUser: 2000
           runAsNonRoot: true
         containers:
         - name: jenkins
