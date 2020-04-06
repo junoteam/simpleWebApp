@@ -11,7 +11,7 @@ items:
       name: "jenkins"
     ports:
       - name: "http"
-        port: 80
+        port: 8080
         targetPort: 8080
         protocol: "TCP"
       - name: "slave"
@@ -33,7 +33,7 @@ items:
           runAsNonRoot: true
         containers:
         - name: jenkins
-          image: jenkins:2.3-alpine
+          image: jenkins/jenkins:lts
           ports:
             - containerPort: 8080
             - containerPort: 50000
