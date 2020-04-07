@@ -91,3 +91,6 @@ Events:           <none>
 - CI/CD tool (Jenkins operator in Kube)
 - Migrate local Kubernetes setup, to GKE ✔
 - Describe how to install HA Kubernetes cluster in AWS Amazon.
+- Create Nginx (Contour) Ingress controller as point of traffic for Jenkins
+- Configure Nginx (Contour) Ingress controller to use TLS + Basic Auth
+- Create deployment in Jenkins + Deploy
