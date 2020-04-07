@@ -8,7 +8,13 @@ items:
     labels:
       app: jenkins
   spec:
-    type: LoadBalancer
+    # Looks like it's bad idead to create services as LoadBalancer and to make it public
+    # Plan
+    # 1) Create Nginx Ingress
+    # 2) Configure basic auth in Ingress for jenkins.mydomain.com
+    # 3) Configure Let's Encrypt certs in Kube for jenkins.mydomain.com
+    # 4) Route traffic: User --https--> Ingress [Basic Auth + TLS Offloading] -> ClusterIP of Jenkins service object in Kube -> Jenkins pod
+    type: LoadBalancer 
     selector:
       app: jenkins
     ports:
