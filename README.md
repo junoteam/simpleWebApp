@@ -88,7 +88,7 @@ Events:           <none>
 - Blue/Green deployments
 - Automaical tests (In Travis)
 - External Load Balancer (for Blue/Green) deployments
-- CI/CD tool (Jenkins operator in Kube)
+- Install Jenkins on top of Kubernetes
 - Migrate local Kubernetes setup, to GKE ✔
 - Describe how to install HA Kubernetes cluster in AWS Amazon.
 - Create Nginx (Contour) Ingress controller as point of traffic for Jenkins
