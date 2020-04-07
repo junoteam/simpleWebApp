@@ -94,3 +94,8 @@ Events:           <none>
 - Create Nginx (Contour) Ingress controller as point of traffic for Jenkins
 - Configure Nginx (Contour) Ingress controller to use TLS + Basic Auth
 - Create deployment in Jenkins + Deploy
+
+---
+
+Related articles: 
+How to deploy Golang Application to Kubernetes https://medium.com/@alexberber/how-to-deploy-golang-application-to-kubernetes-2e85a8ee61b4
