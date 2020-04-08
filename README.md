@@ -85,14 +85,15 @@ Events:           <none>
 *Roadmap:* 
 - HPA manifest for autoscaling pods in Kubernetes ✔
 - Helm3 chart for app 
-- Blue/Green deployments
+- Blue/Green deployments (or via Nginx Ingress or via Contour Ingress)
 - Automatic tests (In Travis)
-- External Load Balancer (for Blue/Green) deployments
-- Install Jenkins on top of Kubernetes
+- Install Jenkins on top of Kubernetes ✔
 - Migrate local Kubernetes setup, to GKE ✔
 - Describe how to install HA Kubernetes cluster in AWS Amazon.
-- Create Nginx (Contour) Ingress controller as point of traffic for Jenkins
-- Configure Nginx (Contour) Ingress controller to use TLS + Basic Auth
+- Create Nginx Ingress controller as point of traffic for Jenkins ✔
+- Create Contour Ingress controller as point of traffic for Jenkins
+- Configure Nginx Ingress controller to use Basic Auth ✔
+- Configure Nginx Ingress controller to use TLS (Let's Encrypt) ✔
 - Create deployment in Jenkins + Deploy
 
 ---
