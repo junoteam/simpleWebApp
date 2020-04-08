@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: webapp
   annotations:
+    kubernetes.io/ingress.class: nginx
     # # type of authentication
     # nginx.ingress.kubernetes.io/auth-type: basic
     # # name of the secret that contains the user/password definitions
