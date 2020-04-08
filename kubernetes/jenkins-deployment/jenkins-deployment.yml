@@ -14,7 +14,7 @@ items:
     # 2) Configure basic auth in Ingress for jenkins.mydomain.com
     # 3) Configure Let's Encrypt certs in Kube for jenkins.mydomain.com
     # 4) Route traffic: User --https--> Ingress [Basic Auth + TLS Offloading] -> ClusterIP of Jenkins service object in Kube -> Jenkins pod
-    type: LoadBalancer 
+    type: ClusterIP 
     selector:
       app: jenkins
     ports:

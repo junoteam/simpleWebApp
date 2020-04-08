@@ -9,14 +9,15 @@ items:
       app: simple-web-app
   spec:
     # type: NodePort
-    type: LoadBalancer
+    # type: LoadBalancer
+    type: ClusterIP
     selector:
       app: simple-web-app
       color: blue # labels for blue / green deployments
     ports:
     - protocol: TCP
       name: http
-      port: 80
+      port: 8181
       targetPort: 8080
       # nodePort: 30000 # setup of static nodePort
 - apiVersion: apps/v1 

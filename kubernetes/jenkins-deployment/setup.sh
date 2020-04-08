@@ -23,4 +23,4 @@ echo "Creating Jenkins deployment in Kube"
 kubectl create -f jenkins-deployment.yml
 
 # Get Jenkins's admin password
-# kubectl exec $(kubectl get pods -l name=jenkins -o jsonpath={.items[0].metadata.name}) cat /var/jenkins_home/secrets/initialAdminPassword
+# kubectl exec $(kubectl get pods -l app=jenkins -o jsonpath={.items[0].metadata.name}) -- cat /var/jenkins_home/secrets/initialAdminPassword

@@ -86,7 +86,7 @@ Events:           <none>
 - HPA manifest for autoscaling pods in Kubernetes ✔
 - Helm3 chart for app 
 - Blue/Green deployments
-- Automaical tests (In Travis)
+- Automatic tests (In Travis)
 - External Load Balancer (for Blue/Green) deployments
 - Install Jenkins on top of Kubernetes
 - Migrate local Kubernetes setup, to GKE ✔
@@ -98,5 +98,7 @@ Events:           <none>
 ---
 
 **Related articles:**   
+
 How to deploy Golang Application to Kubernetes:   
-https://medium.com/@alexberber/how-to-deploy-golang-application-to-kubernetes-2e85a8ee61b4
+https://bit.ly/2Vo5eIP  
+
