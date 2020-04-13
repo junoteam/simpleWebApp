@@ -1,3 +1,4 @@
 simpleWebApp
 .DS_Store
 kubernetes/nginx-ingress/auth
+ssl/*
