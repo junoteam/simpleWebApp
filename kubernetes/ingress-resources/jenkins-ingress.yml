@@ -12,11 +12,15 @@ metadata:
     # message to display with an appropriate context why the authentication is required
     nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - mothes'
 spec:
+  tls: 
+    - hosts:
+      - jenkins.linuxspace.org 
+      secretName: jenkins-tls
   rules:
-  - host: jenkins.linuxspace.org
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: jenkins
-          servicePort: 8080
+    - host: jenkins.linuxspace.org
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: jenkins
+            servicePort: 8080
