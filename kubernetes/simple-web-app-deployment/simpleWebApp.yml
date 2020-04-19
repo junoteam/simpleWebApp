@@ -40,7 +40,7 @@ items:
       spec:
         containers:
         - name: simple-web-app
-          image: mothes/simplewebapp
+          image: mothes/simplewebapp:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
