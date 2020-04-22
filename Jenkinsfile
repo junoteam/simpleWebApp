@@ -22,6 +22,7 @@ pipeline {
             dockerImage.inside {
             sh 'uname -ar'
             sh 'cat /etc/issue'
+            sh 'curl http://localhost:8080/ping'
           }
         }
       }
