@@ -5,20 +5,22 @@ pipeline {
     dockerImage = ''
   }
 
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-  }
+  agent docker
 
+//   agent {
+//     dockerfile {
+//       filename 'Dockerfile'
+//     }
+//   }
+
+//   stages {
+//     stage ('Test') {
+//       steps {
+//         sh 'uname -ar'
+//         sh 'cat /etc/issue'
+//       }
+//     }
   stages {
-    stage ('Test') {
-      steps {
-        sh 'uname -ar'
-        sh 'cat /etc/issue'
-      }
-    }
-
     stage ('Building image') {
       steps {
         script {
