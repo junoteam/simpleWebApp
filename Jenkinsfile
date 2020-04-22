@@ -3,7 +3,6 @@ pipeline {
     dockerfile {
       filename 'Dockerfile'
     }
-
   }
   stages {
     stage('Test') {
@@ -12,6 +11,5 @@ pipeline {
         sh 'cat /etc/issue'
       }
     }
-
   }
 }
