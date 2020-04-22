@@ -3,7 +3,6 @@ pipeline {
     dockerfile {
       filename 'Dockerfile'
     }
-
   }
   stages {
     stage('Test') {
@@ -12,6 +11,9 @@ pipeline {
         sh 'cat /etc/issue'
       }
     }
-
+  }
+  node {
+    checkout scm
+    def customImage = docker.build("mothes/simplewebapp:${env.BUILD_ID}")
   }
 }
