@@ -3,11 +3,13 @@ pipeline {
     registry = "mothes/simplewebapp"
     registryCredential = 'dockerhub'
   }
+
   agent {
     dockerfile {
       filename 'Dockerfile'
     }
   }
+
   stages {
     stage('Test') {
       steps {
@@ -15,12 +17,13 @@ pipeline {
         sh 'cat /etc/issue'
       }
     }
-  }
-  stage('Building image') {
-    steps{
-      script {
-      docker.build registry + ":$BUILD_NUMBER"
+
+    stage ('Building image') {
+      steps {
+       script {
+       docker.build registry + ":$BUILD_NUMBER"
       }
     }
+   }
   }
 }
