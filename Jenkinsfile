@@ -16,16 +16,14 @@ pipeline {
       }
     }
 
-    stage ('Test') {
-      agent {
-        dockerfile {
-        filename 'Dockerfile'
-        }
-      }
-
+    stage ('Test application') {
       steps {
-        sh 'uname -ar'
-        sh 'cat /etc/issue'
+        script { 
+            dockerImage.inside {
+            sh 'uname -ar'
+            sh 'cat /etc/issue'
+          }
+        }
       }
     }
 
