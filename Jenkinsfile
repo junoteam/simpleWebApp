@@ -19,7 +19,7 @@ pipeline {
     stage ('Test') {
       agent {
         docker {
-        image dockerImage
+        image 'golang:1.13.3'
         }
       }
       steps {
