@@ -2,6 +2,7 @@ pipeline {
   environment {
     registry = "mothes/simplewebapp"
     registryCredential = 'dockerhub'
+    dockerImage = ''
   }
 
   agent {
@@ -18,15 +19,15 @@ pipeline {
       }
     }
 
-    agent docker stage ('Building image') {
+    stage ('Building image') {
       steps {
-       script {
-       docker.build registry + ":$BUILD_NUMBER"
+        script {
+        dockerImage = docker.build registry + ":$BUILD_NUMBER"
       }
     }
    }
 
-    agent docker stage('Push Image to DockerHub') {
+    stage('Push Image to DockerHub') {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
@@ -36,7 +37,7 @@ pipeline {
       }
     }
 
-    agent docker stage('Remove unused docker image') {
+    stage('Remove unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
