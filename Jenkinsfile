@@ -7,19 +7,12 @@ pipeline {
 
   agent any
 
-//   agent {
-//     dockerfile {
-//       filename 'Dockerfile'
-//     }
-//   }
+  agent {
+    dockerfile {
+      filename 'Dockerfile'
+    }
+  }
 
-//   stages {
-//     stage ('Test') {
-//       steps {
-//         sh 'uname -ar'
-//         sh 'cat /etc/issue'
-//       }
-//     }
   stages {
     stage ('Building image') {
       steps {
@@ -28,6 +21,19 @@ pipeline {
       }
     }
    }
+
+   stages {
+    stage ('Test') {
+        agent {
+            docker {
+            image dockerImage
+          }
+        }
+      steps {
+        sh 'uname -ar'
+        sh 'cat /etc/issue'
+      }
+    }
 
     stage('Push Image to DockerHub') {
       steps{
