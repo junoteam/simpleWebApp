@@ -1,4 +1,8 @@
 pipeline {
+  environment {
+    registry = "mothes/simplewebapp"
+    registryCredential = 'dockerhub'
+  }
   agent {
     dockerfile {
       filename 'Dockerfile'
@@ -12,8 +16,11 @@ pipeline {
       }
     }
   }
-  node {
-    checkout scm
-    def customImage = docker.build("mothes/simplewebapp:${env.BUILD_ID}")
+  stage('Building image') {
+    steps{
+      script {
+      docker.build registry + ":$BUILD_NUMBER"
+      }
+    }
   }
 }
