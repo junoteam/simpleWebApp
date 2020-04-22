@@ -16,22 +16,16 @@ pipeline {
       }
     }
 
-    // stage ('Test') {
-    //   agent {
-    //     docker {
-    //     image "$dockerImage"
-    //     }
-    //   }
-    //   steps {
-    //     sh 'uname -ar'
-    //     sh 'cat /etc/issue'
-    //   }
-    // }
-
-    stage('Test image') {
-        dockerImage.inside {
-            sh 'echo "Tests passed"'
+    stage ('Test') {
+      agent {
+        dockerfile {
+        filename 'Dockerfile'
         }
+
+      steps {
+        sh 'uname -ar'
+        sh 'cat /etc/issue'
+      }
     }
 
     stage('Push Image to DockerHub') {
