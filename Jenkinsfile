@@ -20,7 +20,8 @@ pipeline {
       steps {
         script { 
             dockerImage.inside {
-            sh '/simpleWebApp && curl http://localhost:8080/ping'
+            sh 'uname -ar'
+            sh 'cat /etc/issue'
           }
         }
       }
