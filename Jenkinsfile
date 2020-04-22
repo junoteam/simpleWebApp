@@ -7,12 +7,6 @@ pipeline {
 
   agent any
 
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-  }
-
   stages {
     stage ('Building image') {
       steps {
@@ -50,6 +44,7 @@ pipeline {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
         sh "docker rmi $registry:latest"
+        }
       }
     }
   }
