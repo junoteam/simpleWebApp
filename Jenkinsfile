@@ -12,8 +12,4 @@ pipeline {
       }
     }
   }
-  node {
-    checkout scm
-    def customImage = docker.build("mothes/simplewebapp:${env.BUILD_ID}")
-  }
 }
