@@ -21,6 +21,7 @@ pipeline {
         dockerfile {
         filename 'Dockerfile'
         }
+      }
 
       steps {
         sh 'uname -ar'
