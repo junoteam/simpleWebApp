@@ -43,18 +43,23 @@ items:
         securityContext:
           fsGroup: 1000
           runAsUser: 2000
-          runAsNonRoot: true
+          #runAsNonRoot: true
         containers:
         - name: jenkins
-          image: jenkins/jenkins:lts
+          image: mothes/jenkins:latest
           ports:
             - containerPort: 8080
             - containerPort: 50000
+          securityContext:
+            privileged: true
           volumeMounts:
             - name: jenkins-data
               mountPath: /var/jenkins_home
             - name: jenkins-ssh
               mountPath: /var/jenkins_home/.ssh
+              readOnly: true
+            - name: docker-socket
+              mountPath: /var/run/docker.sock
               readOnly: true
           livenessProbe:
             httpGet:
@@ -67,6 +72,10 @@ items:
             gcePersistentDisk:
               pdName: kubernetes-jenkins
               fsType: ext4
+          - name: docker-socket
+            hostPath:
+              path: /var/run/docker.sock
+              type: Socket
           - name: jenkins-ssh
             secret:
               secretName: jenkins-ssh
