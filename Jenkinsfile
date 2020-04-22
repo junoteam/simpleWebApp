@@ -1,16 +1,17 @@
 pipeline {
-  
-  stages {
-    stage('Building Docker Image') {
-      agent {
-      dockerfile {
+  agent {
+    dockerfile {
       filename 'Dockerfile'
-        }
-      }
+    }
+
+  }
+  stages {
+    stage('Test') {
       steps {
         sh 'uname -ar'
         sh 'cat /etc/issue'
       }
     }
+
   }
 }
