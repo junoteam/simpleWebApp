@@ -12,17 +12,16 @@ pipeline {
       steps {
         script {
         dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
       }
     }
-   }
 
-   stages {
     stage ('Test') {
-        agent {
-            docker {
-            image dockerImage
-          }
+      agent {
+        docker {
+        image dockerImage
         }
+      }
       steps {
         sh 'uname -ar'
         sh 'cat /etc/issue'
