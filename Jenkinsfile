@@ -38,8 +38,8 @@ pipeline {
       }
     }
 
-    stage('Deploy Docker Container to Kubernetes Cluster')
-          steps {
+    stage('Deploy Docker Container to Kubernetes Cluster') {
+       steps {
         script { 
             dockerImage.inside {
             sh 'uname -ar'
