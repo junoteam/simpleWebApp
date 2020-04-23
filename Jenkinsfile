@@ -38,7 +38,7 @@ pipeline {
       }
     }
 
-    stage('Deploy Docker Container to Kubernetes Cluster') {
+    stage('Deploy to Kubernetes') {
        steps {
         script { 
             dockerImage.inside {
