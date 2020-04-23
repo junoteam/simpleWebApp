@@ -38,6 +38,17 @@ pipeline {
       }
     }
 
+    stage('Deploy Docker Container to Kubernetes Cluster')
+          steps {
+        script { 
+            dockerImage.inside {
+            sh 'uname -ar'
+            sh 'cat /etc/issue'
+          }
+        }
+      }
+    }
+
     stage('Remove unused docker image') {
       steps{
         sh "docker rmi $registry:$BRANCH_NAME"
