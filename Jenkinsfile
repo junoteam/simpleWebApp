@@ -3,6 +3,7 @@ pipeline {
     registry = "mothes/simplewebapp"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    // kube_deployment = 'deployment/simple-web-app'
   }
 
   agent any
@@ -18,7 +19,7 @@ pipeline {
 
     stage ('Test application') {
       steps {
-        script { 
+        script {
             dockerImage.inside {
             sh 'uname -ar'
             sh 'cat /etc/issue'
@@ -38,16 +39,15 @@ pipeline {
       }
     }
 
-    stage('Deploy to Kubernetes') {
-       steps {
-        script { 
-            dockerImage.inside {
-            sh 'uname -ar'
-            sh 'cat /etc/issue'
-          }
-        }
-      }
-    }
+    // stage('Deploy to Kubernetes') {
+    //    steps {
+    //     script { 
+    //       sh "kubectl set image $kube_deployment simple-web-app=$dockerImage"
+    //       sh "kubectl rollout status $kube_deployment"
+    //       sh "kubectl rollout history $kube_deployment"
+    //     }
+    //   }
+    // }
 
     stage('Remove unused docker image') {
       steps{
