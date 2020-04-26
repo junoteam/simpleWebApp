@@ -3,6 +3,7 @@ pipeline {
     registry = "mothes/simplewebapp"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    kube_deployment = 'deployment/simple-web-app'
   }
 
   agent any
@@ -41,10 +42,9 @@ pipeline {
     stage('Deploy to Kubernetes') {
        steps {
         script { 
-            dockerImage.inside {
-            sh 'uname -ar'
-            sh 'cat /etc/issue'
-          }
+          sh "kubectl set image $kube_deployment simple-web-app=$dockerImage"
+          sh "kubectl rollout status $kube_deployment"
+          sh "kubectl rollout history $kube_deployment"
         }
       }
     }
