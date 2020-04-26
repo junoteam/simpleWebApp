@@ -9,7 +9,8 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -o simpleWebApp
 # multistage build
 
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates
+RUN apk  update && \
+    apk --no-cache add ca-certificates curl
 RUN mkdir /templates
 
 COPY --from=builder /go/src/simpleWebApp/simpleWebApp /simpleWebApp
