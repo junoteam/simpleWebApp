@@ -13,6 +13,7 @@ pipeline {
       steps {
         script {
         dockerImage = docker.build registry + ":$BRANCH_NAME" + "-$BUILD_ID"
+        dockerImage = docker.build registry + ":$BUILD_TAG"
         }
       }
     }
@@ -53,7 +54,7 @@ pipeline {
       steps{
         sh "docker rmi $dockerImage"
         //sh "docker rmi $registry:$BUILD_NUMBER"
-        sh "docker rmi $dockerImage:latest"
+        //sh "docker rmi $dockerImage:latest"
       }
     }
   }
