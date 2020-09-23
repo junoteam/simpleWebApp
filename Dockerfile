@@ -16,5 +16,5 @@ RUN mkdir /templates
 COPY --from=builder /go/src/simpleWebApp/simpleWebApp /simpleWebApp
 COPY --from=builder /go/src/simpleWebApp/templates/simpleweb.tmpl /templates
 
-EXPOSE 8080
+EXPOSE 80
 CMD ["/simpleWebApp"]
